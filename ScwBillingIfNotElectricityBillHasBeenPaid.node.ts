@@ -16,8 +16,8 @@ const CREDIT_PER_DAY_ELEC = 5
 
 function keep(element, index, array) {
     let price = element.json.dataNew.billing.electricityBills.reduce((acc, cur) => acc + cur.endDay - cur.startDay + 1, 0) * CREDIT_PER_DAY_ELEC;
-    if (element.json.newData.billing.balance.reduce((acc, cur) => acc + cur, 0) ==
-        element.json.oldData.billing.balance.reduce((acc, cur) => acc + cur, 0) - price)
+    if (element.json.dataNew.billing.balance.reduce((acc, cur) => acc + cur, 0) ==
+        element.json.dataOld.billing.balance.reduce((acc, cur) => acc + cur, 0) - price)
         return false;
 
     return true;

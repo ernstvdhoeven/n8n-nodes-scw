@@ -20,7 +20,7 @@ export class ScwCalendarGetLastPartyInHouse implements INodeType {
 		inputs: ['main'],
         outputs: ['main'],
         inputNames: ['State'],
-        outputNames: ['Last Party'],
+        outputNames: ['Party'],
 		properties: []
 	};
 

@@ -45,7 +45,8 @@ export class ScwBillingIfNotPartyBilledNegativelyForMissingInventory implements 
 		},
 		inputs: ['main', 'main'],
         outputs: ['main'],
-        inputNames: ['State Change', 'Last Party'],
+        inputNames: ['State Change', 'Party'],
+        outputNames: ['State Change'],
 		properties: []
     };
 

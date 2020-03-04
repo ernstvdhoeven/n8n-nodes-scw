@@ -15,7 +15,7 @@ const CREDIT_PER_DAY_ELEC = 5
 
 
 function keep(element, index, array) {
-    return element[0].json.newData.signatures.signatures.length != element[1].json;
+    return element[0].json.dataNew.signatures.signatures.length != element[1].json;
 }
 
 
@@ -33,6 +33,7 @@ export class ScwSignaturesIncorrectNumberOfSignatures implements INodeType {
 		inputs: ['main', 'main'],
         outputs: ['main'],
         inputNames: ['State Change', 'Number'],
+        outputNames: ['State Change'],
 		properties: []
     };
 

@@ -32,7 +32,7 @@ function LegalDocuments({ documentHashes = [] } = {}) {
   this.documentHashes = documentHashes;
 }
 
-function Signatures({ signatures = [] } = {}) {
+function Signatures({ signatures = ['s1', 's2', 's3', 's4', 's5'] } = {}) {
   this.signatures = signatures;
 }
 
@@ -79,6 +79,16 @@ tests.push({
   dataOld: new SmartContractData(),
   dataNew: new SmartContractData({
     parties: new Parties({ publicKeys: ['1', '2', '3'] }),
+    signatures: new Signatures({ signatures: ['s1', 's2', 's3', 's4', 's5'] }),
+  }),
+  shouldFail: false,
+  hasFailed: false,
+  description: 'changing the contract parties should be possible when all parties sign',
+});
+tests.push({
+  dataOld: new SmartContractData(),
+  dataNew: new SmartContractData({
+    parties: new Parties({ publicKeys: ['1', '2', '3'] }),
     signatures: new Signatures({ signatures: ['s1', 's2', 's3'] }),
   }),
   shouldFail: true,
@@ -94,6 +104,16 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'changing the contract parties requires exactly one signature per contract party',
+});
+tests.push({
+  dataOld: new SmartContractData(),
+  dataNew: new SmartContractData({
+    parties: new Parties({ publicKeys: ['1', '2', '3', '4', '5', '6'] }),
+    signatures: new Signatures({ signatures: ['s1', 's2', 's3', 's4', 's5', 's6'] }),
+  }),
+  shouldFail: false,
+  hasFailed: false,
+  description: 'adding a contract party should be possible if all parties sign the new state',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -124,6 +144,22 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'the identity of a new party should be a public key',
+});
+tests.push({
+  dataOld: new SmartContractData(),
+  dataNew: new SmartContractData({
+    calendar: new Calendar({
+      requests: [new ReservationRequest({
+        startDate: new Date(new Date().getTime() + 200 * DAY),
+        endDate: new Date(new Date().getTime() + 214 * DAY),
+        identity: '1',
+      })],
+    }),
+    signatures: new Signatures({ signatures: ['s1'] }),
+  }),
+  shouldFail: false,
+  hasFailed: false,
+  description: 'adding a time slot request should be possible for yourself if it has become available',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -163,6 +199,22 @@ tests.push({
     calendar: new Calendar({
       requests: [new ReservationRequest({
         startDate: new Date(new Date().getTime() + DAY * 14),
+        endDate: new Date(new Date().getTime() + DAY * 18),
+        identity: '3',
+      })],
+    }),
+    signatures: new Signatures({ signatures: ['s3'] }),
+  }),
+  shouldFail: false,
+  hasFailed: false,
+  description: 'you should be able to add reservation requests for yourself if you have enough credit and are below your yearly limit (365 / number of parties)',
+});
+tests.push({
+  dataOld: new SmartContractData(),
+  dataNew: new SmartContractData({
+    calendar: new Calendar({
+      requests: [new ReservationRequest({
+        startDate: new Date(new Date().getTime() + DAY * 14),
         endDate: new Date(new Date().getTime() + DAY * 28),
         identity: '3',
       })],
@@ -185,6 +237,15 @@ tests.push({
 tests.push({
   dataOld: new SmartContractData(),
   dataNew: new SmartContractData({
+    calendar: new Calendar({ schedule: ['1', '1', '1', ' ', '2', '2', '2'] }),
+  }),
+  shouldFail: true,
+  hasFailed: false,
+  description: 'the house should be schedulable if there is a day for the trusted party to check the house',
+});
+tests.push({
+  dataOld: new SmartContractData(),
+  dataNew: new SmartContractData({
     calendar: new Calendar({ schedule: ['1', '1', '1', '2', '2', '2'] }),
   }),
   shouldFail: true,
@@ -203,6 +264,17 @@ const dataOldCustom = new SmartContractData({
   }),
   signatures: new Signatures({ signatures: ['s1', 's4'] }),
 });
+const dataCorrectNewCustom = Object.assign({}, dataOldCustom);
+const dataCorrectNewCalenderCustom = Object.assign({}, dataOldCustom.calendar);
+dataCorrectNewCustom.calendar = dataCorrectNewCalenderCustom;
+dataCorrectNewCustom.calendar.schedule = [' '].concat(Array.from('4'.repeat(7)));
+tests.push({
+    dataOld: dataOldCustom,
+    dataNew: dataCorrectNewCustom,
+    shouldFail: false,
+    hasFailed: false,
+    description: 'if a party has been randomly scheduled for the house to resolve overlapping reservation requests than this should be allowed',
+  });
 const dataNewCustom = Object.assign({}, dataOldCustom);
 const dataNewCalenderCustom = Object.assign({}, dataOldCustom.calendar);
 dataNewCustom.calendar = dataNewCalenderCustom;
@@ -216,11 +288,23 @@ tests.push({
 });
 
 tests.push({
+    dataOld: new SmartContractData(),
+    dataNew: new SmartContractData({
+      inventory: new Inventory({ numberOfForks: 10, numberOfPans: 2 }),
+      billing: new Billing({ balance: [990, 1500, 500, 2240, 2000] }),
+      trustedPartySignature: new TrustedPartySignature({ signature: 'stp' }),
+      calendar: new Calendar({ schedule: ['2', ' ', '1', '1'] }),
+    }),
+    shouldFail: false,
+    hasFailed: false,
+    description: 'missing inventory is allowed if the last party to stay in the house has seen an appropriate reduction in its credit',
+  });
+tests.push({
   dataOld: new SmartContractData(),
   dataNew: new SmartContractData({
     inventory: new Inventory({ numberOfForks: 10, numberOfPans: 2 }),
     trustedPartySignature: new TrustedPartySignature({ signature: 'stp' }),
-    calendar: new Calendar({ schedule: ['2', '1', '1'] }),
+    calendar: new Calendar({ schedule: ['2', ' ', '1', '1'] }),
   }),
   shouldFail: true,
   hasFailed: false,
@@ -247,6 +331,16 @@ tests.push({
   dataOld: new SmartContractData(),
   dataNew: new SmartContractData({
     billing: new Billing({ balance: [1000, 1000, 1000, 1000, 1000] }),
+    trustedPartySignature: new TrustedPartySignature({ signature: 'stp' }),
+  }),
+  shouldFail: false,
+  hasFailed: false,
+  description: 'the trusted party is allowed to make changes to participants credits',
+});
+tests.push({
+  dataOld: new SmartContractData(),
+  dataNew: new SmartContractData({
+    billing: new Billing({ balance: [1000, 1000, 1000, 1000, 1000] }),
   }),
   shouldFail: true,
   hasFailed: false,
@@ -255,11 +349,32 @@ tests.push({
 tests.push({
   dataOld: new SmartContractData(),
   dataNew: new SmartContractData({
-    billing: new Billing({ electricityBills: new ElectricityBill({ startDay: 91, endDay: 120 }) }),
+    billing: new Billing({ balance: [970, 1470, 470, 2210, 1970], electricityBills: new ElectricityBill({ startDay: 91, endDay: 120 }) }),
+    trustedPartySignature: new TrustedPartySignature({ signature: 'stp' }),
+  }),
+  shouldFail: false,
+  hasFailed: false,
+  description: 'the trusted party can add bills to the list of bills',
+});
+tests.push({
+  dataOld: new SmartContractData(),
+  dataNew: new SmartContractData({
+    billing: new Billing({ balance: [970, 1470, 470, 2210, 1970], electricityBills: new ElectricityBill({ startDay: 91, endDay: 120 }) }),
   }),
   shouldFail: true,
   hasFailed: false,
   description: 'only the trusted party can add bills to the list of bills',
+});
+tests.push({
+  dataOld: new SmartContractData(),
+  dataNew: new SmartContractData({
+    calendar: new Calendar({ schedule: ['4', '4', '4', '4', '4'] }),
+    billing: new Billing({ balance: [975, 1475, 475, 2190, 1975], electricityBills: new ElectricityBill({ startDay: 1, endDay: 30 }) }),
+    trustedPartySignature: new TrustedPartySignature({ signature: 'stp' }),
+  }),
+  shouldFail: false,
+  hasFailed: false,
+  description: 'electricity bills are accepted if they if the appropriate of credit is substracted from the relevant parties',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -302,6 +417,17 @@ tests.push({
   dataOld: new SmartContractData(),
   dataNew: new SmartContractData({
     calendar: new Calendar({ schedule: Array.from('1'.repeat(12)) }),
+    billing: new Billing({ balance: [-200, 1450, 450, 2190, 1950] }),
+    trustedPartySignature: new TrustedPartySignature({ signature: 'stp' }),
+  }),
+  shouldFail: false,
+  hasFailed: false,
+  description: 'a party is allowed to have negative credit if the other parties compensate for that',
+});
+tests.push({
+  dataOld: new SmartContractData(),
+  dataNew: new SmartContractData({
+    calendar: new Calendar({ schedule: Array.from('1'.repeat(12)) }),
     billing: new Billing({ balance: [0, 1450, 450, 2190, 1750] }),
     trustedPartySignature: new TrustedPartySignature({ signature: 'stp' }),
   }),
@@ -324,11 +450,31 @@ tests.push({
   dataOld: new SmartContractData(),
   dataNew: new SmartContractData({
     trustedParty: new TrustedParty({ publicKey: 'tp2' }),
+    signatures: new Signatures({ signatures: ['s1', 's2', 's3', 's4', 's5'] }),
+  }),
+  shouldFail: false,
+  hasFailed: false,
+  description: 'the identity of the trusted party can change is all parties sign for it',
+});
+tests.push({
+  dataOld: new SmartContractData(),
+  dataNew: new SmartContractData({
+    trustedParty: new TrustedParty({ publicKey: 'tp2' }),
     signatures: new Signatures({ signatures: ['s1', 's2', 's3', 's4'] }),
   }),
   shouldFail: true,
   hasFailed: false,
   description: 'the identity of the trusted party can only change if all the participants agree',
+});
+tests.push({
+  dataOld: new SmartContractData(),
+  dataNew: new SmartContractData({
+    legalDocuments: new LegalDocuments({ documentHashes: ['123123'] }),
+    signatures: new Signatures({ signatures: ['s1', 's2', 's3', 's4', 's5'] }),
+  }),
+  shouldFail: false,
+  hasFailed: false,
+  description: 'a legal document can be added if all parties sign for it',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -417,17 +563,23 @@ export class ScwStateChanges implements INodeType {
 			color: '#772244',
 		},
 		inputs: ['main'],
-		outputs: ['main'],
+        outputs: ['main'],
+        outputNames: ['State Change'],
 		properties: []
 	};
 
 
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
-        let items = []
+        const staticData = this.getWorkflowStaticData('global');
+
+        let items = [];
+        let staticItems = [];
         for (let testIndex = 0; testIndex < tests.length; testIndex++) {
             items.push({'json': tests[testIndex]});
+            staticItems.push({'json': tests[testIndex]});
         }
 
+        staticData.allTests = staticItems;
 		return this.prepareOutputData(items);
 	}
 }

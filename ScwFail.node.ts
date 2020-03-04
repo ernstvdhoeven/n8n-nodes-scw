@@ -18,7 +18,8 @@ export class ScwFail implements INodeType {
 			color: '#772244',
 		},
 		inputs: ['main'],
-		outputs: [],
+        outputs: [],
+        inputNames: ['Results'],
 		properties: []
 	};
 

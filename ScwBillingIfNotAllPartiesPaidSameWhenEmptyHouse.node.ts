@@ -15,7 +15,7 @@ const CREDIT_PER_DAY_ELEC = 5
 
 
 function keep(element, index, array) {
-    let daysInHouse = element.json.newData.calendar.schedule.length;
+    let daysInHouse = element.json.dataNew.calendar.schedule.length;
     if (daysInHouse != 0)
         return false;
 

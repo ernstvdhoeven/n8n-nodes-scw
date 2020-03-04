@@ -15,11 +15,11 @@ const CREDIT_PER_DAY_ELEC = 5
 
 
 function keep(element, index, array) {
-    if (element.json.newData.calendar['requests'].length == 0)
+    if (element.json.dataNew.calendar['requests'].length == 0)
         return false;
 
-    const maxIdentity = Math.max(element.json.newData.calendar['requests'].map((k, i) => Number(k.identity))).toString();
-    const identitiesInSchedule = new Set(element.json.newData.calendar['schedule']);
+    const maxIdentity = Math.max(element.json.dataNew.calendar['requests'].map((k, i) => Number(k.identity))).toString();
+    const identitiesInSchedule = new Set(element.json.dataNew.calendar['schedule']);
 
     return !identitiesInSchedule.has(maxIdentity);
 }

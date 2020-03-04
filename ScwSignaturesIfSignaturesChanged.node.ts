@@ -40,6 +40,7 @@ export class ScwSignaturesIfSignaturesChanged implements INodeType {
 		inputs: ['main'],
         outputs: ['main'],
         inputNames: ['State Change'],
+        outputNames: ['State Change'],
 		properties: []
     };
 

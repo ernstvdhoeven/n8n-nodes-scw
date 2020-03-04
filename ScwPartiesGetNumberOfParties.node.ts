@@ -20,7 +20,7 @@ export class ScwPartiesGetNumberOfParties implements INodeType {
 		name: 'scwPartiesGetNumberOfParties',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if parties have been added in the current state.',
+		description: 'Outputs the number of parties in the input state.',
 		defaults: {
 			name: 'Get Number Of Parties',
 			color: '#772244',
@@ -28,7 +28,7 @@ export class ScwPartiesGetNumberOfParties implements INodeType {
 		inputs: ['main'],
         outputs: ['main'],
         inputNames: ['State'],
-        outputNames: ['Number Of Parties'],
+        outputNames: ['Number'],
 		properties: []
     };
 

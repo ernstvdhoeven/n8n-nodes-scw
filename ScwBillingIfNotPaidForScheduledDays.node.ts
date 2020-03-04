@@ -15,13 +15,13 @@ const CREDIT_PER_DAY_ELEC = 5
 
 
 function keep(element, index, array) {
-    let daysInHouse = element.json.newData.calendar.schedule.length;
+    let daysInHouse = element.json.dataNew.calendar.schedule.length;
     if (daysInHouse == 0)
         return false;
 
     // this is a HACK for the purpose of this workshop (like so many others)
     // using this check we limit the amount of tests we need to modify for a correct result
-    const uniqueScheduled = new Set(element.json.newData.calendar.schedule);
+    const uniqueScheduled = new Set(element.json.dataNew.calendar.schedule);
     if (uniqueScheduled.size != 1)
         return false;
 

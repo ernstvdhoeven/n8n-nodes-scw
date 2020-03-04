@@ -15,11 +15,12 @@ const CREDIT_PER_DAY_ELEC = 5
 
 
 function keep(element, index, array) {
-    if (element.json.newData.calendar['requests'].length == 0)
+    // this is a hack, to have less work when writing tests
+    if (element.json.dataNew.calendar['requests'].length == 0)
         return false;
 
-    const identitiesInRequests = new Set(element.json.newData.calendar['requests'].map((k, i) => k.identity));
-    const identitiesInSchedule = new Set(element.json.newData.calendar['schedule']);
+    const identitiesInRequests = new Set(element.json.dataNew.calendar['requests'].map((k, i) => k.identity));
+    const identitiesInSchedule = new Set(element.json.dataNew.calendar['schedule']);
     const identitiesWithoutReservation = Array.from(identitiesInSchedule).filter(x => !identitiesInRequests.has(x));
 
     return identitiesWithoutReservation.length > 0;

@@ -33,6 +33,7 @@ export class ScwTrustedPartySignatureHasNotSigned implements INodeType {
 		inputs: ['main', 'main'],
         outputs: ['main'],
         inputNames: ['State Change'],
+        outputNames: ['State Change'],
 		properties: []
     };
 

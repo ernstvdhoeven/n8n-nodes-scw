@@ -33,6 +33,7 @@ export class ScwTrustedPartySignatureIsSame implements INodeType {
 		inputs: ['main', 'main'],
         outputs: ['main'],
         inputNames: ['State Change', 'Signature'],
+        outputNames: ['State Change'],
 		properties: []
     };
 

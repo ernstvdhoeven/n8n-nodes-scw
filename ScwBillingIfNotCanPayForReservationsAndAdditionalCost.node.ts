@@ -56,7 +56,8 @@ export class ScwBillingIfNotCanPayForReservationsAndAdditionalCost implements IN
 		},
 		inputs: ['main', 'main'],
         outputs: ['main'],
-        inputNames: ['State Change', 'Cost'],
+        inputNames: ['State Change', 'Number'],
+        outputNames: ['State Change'],
 		properties: []
     };
 

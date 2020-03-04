@@ -55,7 +55,9 @@ export class ScwBillingIfNotCanPayForReservations implements INodeType {
 			color: '#772244',
 		},
 		inputs: ['main'],
-		outputs: ['main'],
+        outputs: ['main'],
+        inputNames: ['State Change'],
+        outputNames: ['State Change'],
 		properties: []
     };
 

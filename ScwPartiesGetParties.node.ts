@@ -28,7 +28,7 @@ export class ScwPartiesGetParties implements INodeType {
 		inputs: ['main'],
         outputs: ['main'],
         inputNames: ['State'],
-        outputNames: ['Number'],
+        outputNames: ['Parties'],
 		properties: []
 	};
 
@@ -39,7 +39,7 @@ export class ScwPartiesGetParties implements INodeType {
         const result = []
 
         for (let itemIndex = 0; itemIndex < itemsAll.length; itemIndex++) {
-            result.push({'json': itemsAll[itemIndex].json.parties});
+            result.push({'json': itemsAll[itemIndex].json.parties['publicKeys']});
         }
 
 		return this.prepareOutputData(result);

@@ -15,10 +15,10 @@ const CREDIT_PER_DAY_ELEC = 5
 
 
 function keep(element, index, array) {
-    const allowedDaysPerParty = Math.floor(365/ element.json.newData.parties.publicKeys.length);
+    const allowedDaysPerParty = Math.floor(365/ element.json.dataNew.parties.publicKeys.length);
 
     let current = 0;
-    for (const assigned of element.json.newData.calendar.schedule) {
+    for (const assigned of element.json.dataNew.calendar.schedule) {
         const next = Number(assigned);
         if (Number.isNaN(next)) {
             current = 0;

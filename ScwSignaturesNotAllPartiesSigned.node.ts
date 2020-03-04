@@ -15,11 +15,9 @@ const CREDIT_PER_DAY_ELEC = 5
 
 
 function keep(element, index, array) {
-    if (element[0].json.dataNew.signatures.signatures.length != element[1].json.publicKeys.length)
-        return true;
-
-    for (let i = 0; i < element[0].json.dataNew.signatures.signatures.length; i++)
-        if (element[0].json.dataNew.signatures.signatures[i] != 's' + element[1].json.publicKeys[i])
+    const allSignatures = new Set(element[0].json.dataNew.signatures.signatures);
+    for (let i = 0; i < element[1].json.length; i++)
+        if (!allSignatures.has('s' + element[1].json[i]))
             return true;
 
     return false;
@@ -40,6 +38,7 @@ export class ScwSignaturesNotAllPartiesSigned implements INodeType {
 		inputs: ['main', 'main'],
         outputs: ['main'],
         inputNames: ['State Change', 'Parties'],
+        outputNames: ['State Change'],
 		properties: []
     };
 

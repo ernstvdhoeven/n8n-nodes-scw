@@ -45,7 +45,8 @@ export class ScwBillingIfNotPartyBilledForMissingInventory implements INodeType 
 		},
 		inputs: ['main', 'main'],
         outputs: ['main'],
-        inputNames: ['State Change', 'Last Party'],
+        inputNames: ['State Change', 'Party'],
+        outputNames: ['State Change'],
 		properties: []
     };
 

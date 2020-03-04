@@ -18,7 +18,8 @@ export class ScwSuccess implements INodeType {
 			color: '#772244',
 		},
 		inputs: ['main'],
-		outputs: [],
+        outputs: [],
+        inputNames: ['Results'],
 		properties: []
 	};
 

@@ -17,33 +17,33 @@ export class ScwProcessTests implements INodeType {
 			name: 'Process Tests',
 			color: '#772244',
 		},
-        inputs: ['main', 'main'],
+        inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['All', 'Rejected'],
-        outputNames: ['All'],
+        inputNames: ['Rejected'],
+        outputNames: ['Results'],
 		properties: []
 	};
 
 
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 
-        const itemsAll = this.getInputData(0);
-        const itemsRejected = this.getInputData(1);
+        const itemsRejected = this.getInputData();
+        const staticData = this.getWorkflowStaticData('global');
 
-		for (let itemIndex = 0; itemIndex < itemsAll.length; itemIndex++) {
+		for (let itemIndex = 0; itemIndex < staticData['allTests'].length; itemIndex++) {
             for (let rejectedIndex = 0; rejectedIndex < itemsRejected.length; rejectedIndex++) {
-                if (itemsAll[itemIndex].json.hasFailed) {
+                if (staticData['allTests'][itemIndex].json.hasFailed) {
                     continue;
                 }
 
-                if (itemsAll[itemIndex].json.description != itemsRejected[rejectedIndex].json.description) {
+                if (staticData['allTests'][itemIndex].json.description != itemsRejected[rejectedIndex].json.description) {
                     continue;
                 }
 
-                itemsAll[itemIndex].json.hasFailed = true;
+                staticData['allTests'][itemIndex].json.hasFailed = true;
             }
         }
 
-		return this.prepareOutputData(itemsAll);
+        return this.prepareOutputData(staticData['allTests']);
 	}
 }

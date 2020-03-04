@@ -15,7 +15,7 @@ const CREDIT_PER_DAY_ELEC = 5
 
 
 function keep(element, index, array) {
-    return new Set(element[1].json).has(element[0].json.newData.trustedParty.publicKey);
+    return new Set(element[1].json).has(element[0].json.dataNew.trustedParty.publicKey);
 }
 
 
