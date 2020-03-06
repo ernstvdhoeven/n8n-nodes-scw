@@ -84,6 +84,7 @@ tests.push({
   shouldFail: false,
   hasFailed: false,
   description: 'changing the contract parties should be possible when all parties sign',
+  category: 'parties',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -93,7 +94,8 @@ tests.push({
   }),
   shouldFail: true,
   hasFailed: false,
-  description: 'changing the contract parties requires enough signatures',
+  description: 'changing the contract parties requires signatures from all existing contract parties',
+  category: 'parties',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -104,6 +106,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'changing the contract parties requires exactly one signature per contract party',
+  category: 'parties',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -114,6 +117,7 @@ tests.push({
   shouldFail: false,
   hasFailed: false,
   description: 'adding a contract party should be possible if all parties sign the new state',
+  category: 'parties',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -124,6 +128,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'an added party to the contract should not be be a participant already',
+  category: 'parties',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -134,6 +139,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'an added party to the contract should also provide a signature',
+  category: 'parties',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -144,6 +150,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'the identity of a new party should be a public key',
+  category: 'parties',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -160,6 +167,7 @@ tests.push({
   shouldFail: false,
   hasFailed: false,
   description: 'adding a time slot request should be possible for yourself if it has become available',
+  category: 'booking',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -176,6 +184,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'adding a time slot request can not be done before a date is available (not more than a year in advance)',
+  category: 'booking',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -192,6 +201,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'adding a time slot request can only be done on your own behalf',
+  category: 'booking',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -208,6 +218,7 @@ tests.push({
   shouldFail: false,
   hasFailed: false,
   description: 'you should be able to add reservation requests for yourself if you have enough credit and are below your yearly limit (365 / number of parties)',
+  category: 'booking',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -224,6 +235,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'you should have enough credits to pay for the days you reserve',
+  category: 'booking',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -233,6 +245,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'you can not get assigned more than your share of the days',
+  category: 'booking',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -242,6 +255,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'the house should be schedulable if there is a day for the trusted party to check the house',
+  category: 'trusted party',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -251,6 +265,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'there should be a day for the trusted party to check the house before it is reserved again',
+  category: 'trusted party',
 });
 
 const startDateCustom = new Date(new Date().getTime() + 14 * DAY);
@@ -274,6 +289,7 @@ tests.push({
     shouldFail: false,
     hasFailed: false,
     description: 'if a party has been randomly scheduled for the house to resolve overlapping reservation requests than this should be allowed',
+    category: 'booking',
   });
 const dataNewCustom = Object.assign({}, dataOldCustom);
 const dataNewCalenderCustom = Object.assign({}, dataOldCustom.calendar);
@@ -285,6 +301,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'when multiple parties request the same day assign at random based on previous state hash',
+  category: 'booking',
 });
 
 tests.push({
@@ -298,6 +315,7 @@ tests.push({
     shouldFail: false,
     hasFailed: false,
     description: 'missing inventory is allowed if the last party to stay in the house has seen an appropriate reduction in its credit',
+    category: 'inventory',
   });
 tests.push({
   dataOld: new SmartContractData(),
@@ -309,6 +327,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'reductions in inventory should be compensated for by a deduction in participant credit',
+  category: 'inventory',
 });
 
 tests.push({
@@ -326,6 +345,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'you should have enough credits after a reservation to pay for missing inventory',
+  category: 'inventory',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -336,6 +356,7 @@ tests.push({
   shouldFail: false,
   hasFailed: false,
   description: 'the trusted party is allowed to make changes to participants credits',
+  category: 'trusted party',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -345,6 +366,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'only the trusted party is allowed to make changes to participants credits',
+  category: 'trusted party',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -355,6 +377,7 @@ tests.push({
   shouldFail: false,
   hasFailed: false,
   description: 'the trusted party can add bills to the list of bills',
+  category: 'trusted party',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -364,6 +387,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'only the trusted party can add bills to the list of bills',
+  category: 'trusted party',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -375,6 +399,7 @@ tests.push({
   shouldFail: false,
   hasFailed: false,
   description: 'electricity bills are accepted if they if the appropriate of credit is substracted from the relevant parties',
+  category: 'billing',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -385,6 +410,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'electricity bills have to be paid',
+  category: 'billing',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -399,6 +425,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'participants that reserved the house for days pay more of the electricity bill for that period',
+  category: 'billing',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -412,6 +439,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'electricity bills are during non reserved days split between all participants',
+  category: 'billing',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -423,6 +451,7 @@ tests.push({
   shouldFail: false,
   hasFailed: false,
   description: 'a party is allowed to have negative credit if the other parties compensate for that',
+  category: 'billing',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -434,6 +463,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'participants should get negative credit if they do not have enough to pay',
+  category: 'billing',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -445,6 +475,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'all other participants should temporarily cover for missing credit from other participants',
+  category: 'billing',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -455,6 +486,7 @@ tests.push({
   shouldFail: false,
   hasFailed: false,
   description: 'the identity of the trusted party can change is all parties sign for it',
+  category: 'trusted party',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -465,6 +497,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'the identity of the trusted party can only change if all the participants agree',
+  category: 'trusted party',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -475,6 +508,7 @@ tests.push({
   shouldFail: false,
   hasFailed: false,
   description: 'a legal document can be added if all parties sign for it',
+  category: 'legal documents',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -485,6 +519,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'adding a legal document requires a signature from all the participants',
+  category: 'legal documents',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -495,6 +530,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'the hash of the legal document should be properly formatted',
+  category: 'legal documents',
 });
 
 // Advanced Tests
@@ -507,6 +543,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'same public key found multiple times in participant list',
+  category: 'misc',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -519,6 +556,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'adding inventory should not result in rewarding the participant with credit',
+  category: 'misc',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -528,6 +566,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'participant five should not be able to add money to his balance',
+  category: 'misc',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -535,6 +574,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'participant should not always be selected at random',
+  category: 'misc',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -542,6 +582,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'the agreed upon legal document should be validated',
+  category: 'misc',
 });
 tests.push({
   dataOld: new SmartContractData(),
@@ -549,6 +590,7 @@ tests.push({
   shouldFail: true,
   hasFailed: false,
   description: 'participants should not be able to get an extra day on top of their share',
+  category: 'misc',
 });
 
 export class ScwStateChanges implements INodeType {
@@ -565,7 +607,50 @@ export class ScwStateChanges implements INodeType {
 		inputs: ['main'],
         outputs: ['main'],
         outputNames: ['State Change'],
-		properties: []
+		properties: [
+            {
+				displayName: 'parties',
+				name: 'parties',
+				type: 'boolean',
+				default: false,
+            },
+            {
+                displayName: 'booking',
+                name: 'booking',
+                type: 'boolean',
+                default: false,
+            },
+            {
+				displayName: 'billing',
+				name: 'billing',
+				type: 'boolean',
+				default: false,
+            },
+            {
+				displayName: 'trusted party',
+				name: 'trusted party',
+				type: 'boolean',
+				default: false,
+            },
+            {
+				displayName: 'inventory',
+				name: 'inventory',
+				type: 'boolean',
+				default: false,
+            },
+            {
+				displayName: 'legal documents',
+				name: 'legal documents',
+				type: 'boolean',
+				default: false,
+            },
+            {
+				displayName: 'misc',
+				name: 'misc',
+				type: 'boolean',
+				default: false,
+            },
+        ]
 	};
 
 
@@ -575,6 +660,9 @@ export class ScwStateChanges implements INodeType {
         let items = [];
         let staticItems = [];
         for (let testIndex = 0; testIndex < tests.length; testIndex++) {
+            if (!this.getNodeParameter(tests[testIndex].category, 0) as boolean)
+                continue;
+
             items.push({'json': tests[testIndex]});
             staticItems.push({'json': tests[testIndex]});
         }
