@@ -20,3 +20,4 @@ spec:
         image: workshopgi.azurecr.io/n8n:latest
         ports:
         - containerPort: 5678
+      imagePullPolicy: Always
