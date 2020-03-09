@@ -18,6 +18,6 @@ spec:
       containers:
       - name: workshopgi
         image: workshopgi.azurecr.io/n8n:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 5678
-      imagePullPolicy: Always
