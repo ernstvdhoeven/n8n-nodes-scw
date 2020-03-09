@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workshopgi-deployment
+  labels:
+    app: workshopgi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workshopgi
+  template:
+    metadata:
+      labels:
+        app: workshopgi
+    spec:
+      containers:
+      - name: workshopgi
+        image: workshopgi.azurecr.io/n8n:latest
+        ports:
+        - containerPort: 5678
