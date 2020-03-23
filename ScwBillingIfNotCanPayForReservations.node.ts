@@ -45,19 +45,19 @@ function keep(element, index, array) {
 
 export class ScwBillingIfNotCanPayForReservations implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Billing - If Not Can Pay For Reservations',
+		displayName: 'Scw - Cannot Pay For Reservations',
 		name: 'scwBillingIfNotCanPayForReservations',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the person that currently has a reservation does not have the credit to pay for it.',
+		description: 'Input: State Changes - Output: State Changes that include reservation requests without the requester having enough balance to pay for those.',
 		defaults: {
-			name: 'If Not Can Pay For Reservations',
+			name: 'Cannot Pay For Reservations',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

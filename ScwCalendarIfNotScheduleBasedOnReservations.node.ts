@@ -29,19 +29,19 @@ function keep(element, index, array) {
 
 export class ScwCalendarIfNotScheduleBasedOnReservations implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Calendar - If Schedule Is Not Based On Reservation Requests',
+		displayName: 'Scw - Unrequested Scheduled Days',
 		name: 'scwCalendarIfNotScheduleBasedOnReservations',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the schedule is not based on previous reservation requests.',
+		description: 'Input: State Changes - Output: State Changes for which the schedule is not based on reservation requests.',
 		defaults: {
-			name: 'Schedule Not Based On Reservation Requests',
+			name: 'Unrequested Scheduled Days',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

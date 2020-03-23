@@ -28,19 +28,19 @@ function keep(element, index, array) {
 
 export class ScwSignaturesIfSignaturesChanged implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Signatures - If Signatures Changed',
+		displayName: 'Scw - Signatures Changed',
 		name: 'scwSignaturesIfSignaturesChanged',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the number of signatures has changed between the old and new state.',
+		description: 'Input: State Changes - Output: State Changes for which the number of signatures has changed between the old and new state.',
 		defaults: {
 			name: 'Signatures Changed',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

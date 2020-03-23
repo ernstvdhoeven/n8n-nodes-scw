@@ -25,19 +25,19 @@ function keep(element, index, array) {
 
 export class ScwInventoryHasChanged implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Inventory - If Has Changed',
+		displayName: 'Scw - Inventory Changed',
 		name: 'scwInventoryHasChanged',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the inventory has been changed in the current state.',
+		description: 'Input: State Changes - Output: State Changes for which the inventory has been changed in the current state.',
 		defaults: {
-			name: 'If Inventory Changed',
+			name: 'Inventory Changed',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

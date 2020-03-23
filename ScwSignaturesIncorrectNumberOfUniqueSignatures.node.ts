@@ -21,19 +21,19 @@ function keep(element, index, array) {
 
 export class ScwSignaturesIncorrectNumberOfUniqueSignatures implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Signatures - Incorrect Number Of Unique Signatures',
+		displayName: 'Scw - Incorrect Number Of Unique Signatures',
 		name: 'scwSignaturesIncorrectNumberUniqueOfSignatures',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the number of unique signatures in the new state does not match the expected number (given as input).',
+		description: 'Input: State Changes, Number - Output: State Changes for which the number of unique signatures in the new state does not match the expected number (given as input).',
 		defaults: {
 			name: 'Incorrect Number Of Unique Signatures',
 			color: '#772244',
 		},
 		inputs: ['main', 'main'],
         outputs: ['main'],
-        inputNames: ['State Change', 'Number'],
-        outputNames: ['State Change'],
+        inputNames: ['SC', 'Number'],
+        outputNames: ['SC'],
 		properties: []
     };
 

@@ -22,19 +22,19 @@ function keep(element, index, array) {
 
 export class ScwLegalDocumentsIncorrectFormatting implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Legal Documents - Incorrect Formatting',
+		displayName: 'Scw - Legal Documents Incorrectly Formatted',
 		name: 'scwLegalDocumentsIncorrectFormatting',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if legal documents have been formatted incorrectly.',
+		description: 'Input: State Changes - Output: State Changes for which legal documents have been formatted incorrectly.',
 		defaults: {
-			name: 'If Legal Documents Incorrectly Formatted',
+			name: 'Legal Documents Incorrectly Formatted',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

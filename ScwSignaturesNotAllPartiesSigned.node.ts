@@ -26,19 +26,19 @@ function keep(element, index, array) {
 
 export class ScwSignaturesNotAllPartiesSigned implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Signatures - Not All Parties Signed',
+		displayName: 'Scw - Not All Parties Signed',
 		name: 'scwSignaturesNotAllPartiesSigned',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if not all the parties provided as input signed the new state.',
+		description: 'Input: State Changes, Parties - Output: State Changes in which not all the parties (provided as input) signed the new state.',
 		defaults: {
 			name: 'Not All Parties Signed',
 			color: '#772244',
 		},
 		inputs: ['main', 'main'],
         outputs: ['main'],
-        inputNames: ['State Change', 'Parties'],
-        outputNames: ['State Change'],
+        inputNames: ['SC', 'Parties'],
+        outputNames: ['SC'],
 		properties: []
     };
 

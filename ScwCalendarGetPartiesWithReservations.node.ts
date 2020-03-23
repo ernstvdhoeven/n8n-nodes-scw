@@ -16,11 +16,11 @@ const CREDIT_PER_DAY_ELEC = 5
 
 export class ScwCalendarGetPartiesWithReservations implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Calendar - Get Parties With Reservation Requests',
+		displayName: 'Scw - Get Parties With Reservation Requests',
 		name: 'scwCalendarGetPartiesWithReservations',
 		group: ['transform'],
 		version: 1,
-		description: 'Outputs all parties in the input state with a reservation request.',
+		description: 'Input: State - Output: Parties with a reservation request according to the input state.',
 		defaults: {
 			name: 'Get Parties With Reservation Requests',
 			color: '#772244',

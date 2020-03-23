@@ -16,11 +16,11 @@ const CREDIT_PER_DAY_ELEC = 5
 
 export class ScwTrustedPartySignatureGetSignature implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Trusted Party Signature - Get Signature',
+		displayName: 'Scw - Get Trusted Party Signature',
 		name: 'scwTrustedPartySignatureGetSignature',
 		group: ['transform'],
 		version: 1,
-		description: 'Outputs the signature of the trusted party for a given input state.',
+		description: 'Input: State - Output: Signature (the signature of the trusted party for a given input state).',
 		defaults: {
 			name: 'Get Trusted Party Signature',
 			color: '#772244',

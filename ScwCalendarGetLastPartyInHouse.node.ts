@@ -8,13 +8,13 @@ import {
 
 export class ScwCalendarGetLastPartyInHouse implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw - Get Last Party In House',
+		displayName: 'Scw - Get Last Occupant',
 		name: 'scwCalendarGetLastPartyInHouse',
 		group: ['transform'],
 		version: 1,
-		description: 'Outputs the last party that stayed in the house according to an input state.',
+		description: 'Input: State - Output: Party that was the last occupant of the house according to the input state.',
 		defaults: {
-			name: 'Get Last Party',
+			name: 'Get Last Occupant',
 			color: '#772244',
 		},
 		inputs: ['main'],

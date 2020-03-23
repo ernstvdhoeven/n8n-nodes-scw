@@ -32,19 +32,19 @@ function keep(element, index, array) {
 
 export class ScwBillingIfNotAllPartiesPaidSameWhenEmptyHouse implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Billing - If Not Electricity Cost Equally Divided Between Parties When House Is Empty',
+		displayName: 'Scw - Electricity Cost Unequally Divided When House Empty',
 		name: 'scwBillingIfNotAllPartiesPaidSameWhenEmptyHouse',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if not all parties paid the same amount for electricity for days that the house was empty.',
+		description: 'Input: State Changes - Output: States Changes for which not all parties paid the same amount for electricity for days that the house was empty.',
 		defaults: {
-			name: 'If Not Electricity Cost Equally Divided',
+			name: 'Electricity Cost Unequally Divided',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

@@ -21,19 +21,19 @@ function keep(element, index, array) {
 
 export class ScwTrustedPartySignatureHasNotSigned implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Trusted Party Signature - Has Not Signed',
+		displayName: 'Scw - No Trusted Party Signed',
 		name: 'scwTrustedPartySignatureHasNotSigned',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the provided signature is the same as the trusted party signature of the new state.',
+		description: 'Input: State Changes - Output: State Changes for which the Trusted Party has not signed the new state.',
 		defaults: {
-			name: 'Trusted Party Has Not Signed',
+			name: 'No Trusted Party Signature',
 			color: '#772244',
 		},
 		inputs: ['main', 'main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

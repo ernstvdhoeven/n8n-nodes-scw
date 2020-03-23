@@ -34,19 +34,19 @@ function keep(element, index, array) {
 
 export class ScwBillingIfNotPaidForScheduledDays implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Billing - If Not All Parties Paid For Days In House',
+		displayName: 'Scw - Unpaid Scheduled Days',
 		name: 'scwBillingIfNotPaidForScheduledDays',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if not all parties paid for the days they have spent in the house.',
+		description: 'Input: State Changes - Output: State Changes in which not all parties paid for the days they have spent in the house.',
 		defaults: {
-			name: 'If Not Party Paid For Days In House',
+			name: 'Unpaid Scheduled Days',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

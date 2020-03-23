@@ -12,14 +12,14 @@ export class ScwGetOldState implements INodeType {
 		name: 'scwGetOldState',
 		group: ['transform'],
 		version: 1,
-		description: 'Only outputs the old state and not all state change data.',
+		description: 'Input: State Changes - Output: State (only outputs the old state and not all state change data).',
 		defaults: {
 			name: 'Get Old State',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
+        inputNames: ['SC'],
         outputNames: ['State'],
 		properties: []
 	};

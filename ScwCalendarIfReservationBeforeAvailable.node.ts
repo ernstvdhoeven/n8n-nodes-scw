@@ -26,19 +26,19 @@ function keep(element, index, array) {
 
 export class ScwCalendarIfReservationBeforeAvailable implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Calendar - If Reservation Request Made Before Available',
+		displayName: 'Scw - Unavailable Date Requested',
 		name: 'scwCalendarIfReservationBeforeAvailable',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if a reservation request has been added before the date has become available.',
+		description: 'Input: State Changes - Output: State Changes for which a reservation request has been added before the date has become available.',
 		defaults: {
-			name: 'If Request Before Available',
+			name: 'Unavailable Date Requested',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

@@ -8,7 +8,7 @@ import {
 
 export class ScwProcessTests implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw - Process Tests',
+		displayName: 'Scw System - Process Tests',
 		name: 'scwProcessTests',
 		group: ['transform'],
 		version: 1,

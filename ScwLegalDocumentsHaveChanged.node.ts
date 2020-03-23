@@ -28,19 +28,19 @@ function keep(element, index, array) {
 
 export class ScwLegalDocumentsHaveChanged implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Legal Documents - If Have Changed',
+		displayName: 'Scw - Legal Documents Changed',
 		name: 'scwLegalDocumentsHaveChanged',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if legal documents have been changed/added in the current state.',
+		description: 'Input: State Changes - Output: State Changes for which legal documents have been changed/added in the current state.',
 		defaults: {
-			name: 'If Legal Documents Changed',
+			name: 'Legal Documents Changed',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

@@ -24,19 +24,19 @@ function keep(element, index, array) {
 
 export class ScwTrustedPartyHasChanged implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Trusted Party - Has Changed',
+		displayName: 'Scw - Trusted Party Changed',
 		name: 'scwTrustedPartyHasChanged',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the trusted party of the contract has changed between the old and the new state.',
+		description: 'Input: State Changes - Output: State Changes for which the trusted party of the contract has changed.',
 		defaults: {
 			name: 'Trusted Party Changed',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

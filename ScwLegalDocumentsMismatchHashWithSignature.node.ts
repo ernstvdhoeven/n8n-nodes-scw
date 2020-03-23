@@ -25,19 +25,19 @@ function keep(element, index, array) {
 
 export class ScwLegalDocumentsMismatchHashWithSignature implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Legal Documents - Hash/Signature Mismatch',
+		displayName: 'Scw - Legal Documents Hash Signature Mismatch',
 		name: 'scwLegalDocumentsMismatchHashWithSignature',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the hashes of legal documents mismatch with the signatures.',
+		description: 'Input: State Changes - Output: State Changes for which the hashes of legal documents mismatch with the signatures.',
 		defaults: {
-			name: 'If Legal Documents Hash/Signature Mismatch',
+			name: 'Legal Documents Hash Signature Mismatch',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

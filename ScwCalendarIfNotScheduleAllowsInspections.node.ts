@@ -39,19 +39,19 @@ function keep(element, index, array) {
 
 export class ScwCalendarIfNotScheduleAllowsInspections implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Calendar - If No Time For Inspections In Schedule',
+		displayName: 'Scw - No Time For Inspections',
 		name: 'scwCalendarIfNotScheduleAllowsInspections',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the schedule does not leave enough time for inspections in between reservations.',
+        description: 'Input: State Changes - Output: State Changes for which the schedule does not leave enough time for inspections in between reservations.',
 		defaults: {
-			name: 'If No Time For Inspections',
+			name: 'No Time For Inspections',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

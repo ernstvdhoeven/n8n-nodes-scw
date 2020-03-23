@@ -35,19 +35,19 @@ function keep(element, index, array) {
 
 export class ScwCalendarIfNotFairSchedule implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Calendar - If Parties Have More Than Their Share Of Days',
+		displayName: 'Scw - Exceed Share Of Days',
 		name: 'scwCalendarIfNotFairSchedule',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if one or more parties have more scheduled days than is allowed/fair.',
+		description: 'Input: State Changes - Output: State Changes for which one or more parties have more scheduled days than is allowed.',
 		defaults: {
-			name: 'If Schedule Is Unfair',
+			name: 'Exceed Share Of Days',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

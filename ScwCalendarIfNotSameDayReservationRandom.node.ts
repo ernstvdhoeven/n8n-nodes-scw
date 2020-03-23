@@ -27,19 +27,19 @@ function keep(element, index, array) {
 
 export class ScwCalendarIfNotSameDayReservationRandom implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Calendar - If Not Randomly Decided When Conflicting Reservation Requests',
+		displayName: 'Scw - Not Randomly Resolved Conflicting Reservation Requests',
 		name: 'scwCalendarIfNotSameDayReservationRandom',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if conflicts between reservations request (overlapping dates) are not randomly decided.',
+		description: 'Input: State Changes - Output: State Changes for which conflicts between reservations request (overlapping dates) are not randomly decided.',
 		defaults: {
-			name: 'Conflicting Reservation Requests Not Randomly Resolved',
+			name: 'Not Randomly Resolved Conflict',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

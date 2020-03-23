@@ -29,19 +29,19 @@ function keep(element, index, array) {
 
 export class ScwBillingIfElectricityBillsHaveChanged implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Billing - If Electricity Bills Have Changed',
+		displayName: 'Scw - Electricity Bills Changed',
 		name: 'scwBillingIfElectricityBillsHaveChanged',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if electricity bills have been added/changed in the current state.',
+		description: 'Input: State Changes - Output: State Changes for which the electricity bills have changed between old and new states.',
 		defaults: {
-			name: 'If Electricity Bills Changed',
+			name: 'Electricity Bills Changed',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

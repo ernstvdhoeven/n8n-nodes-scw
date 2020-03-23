@@ -45,19 +45,19 @@ function keep(element, index, array) {
 
 export class ScwBillingIfNotCanPayForReservationsAndAdditionalCost implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Billing - If Not Can Pay For Reservations And Additional Cost',
+		displayName: 'Scw - Cannot Pay For Reservations And Additional Cost',
 		name: 'scwBillingIfNotCanPayForReservationsAndAdditionalCost',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if a person that currently has a reservation does not have the credit to pay for the reservation and potential additional costs.',
+		description: 'Input: State Change, Number - Output: State Changes that include reservation requests without the requester having enough balance to pay for the days in the house and any additional costs (the number input).',
 		defaults: {
-			name: 'If Not Can Pay For Reservations And Additional Cost',
+			name: 'Cannot Pay For Reservations And Additional Cost',
 			color: '#772244',
 		},
 		inputs: ['main', 'main'],
         outputs: ['main'],
-        inputNames: ['State Change', 'Number'],
-        outputNames: ['State Change'],
+        inputNames: ['SC', 'Number'],
+        outputNames: ['SC'],
 		properties: []
     };
 

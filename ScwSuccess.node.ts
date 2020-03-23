@@ -8,7 +8,7 @@ import {
 
 export class ScwSuccess implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw - Success',
+		displayName: 'Scw System - Success',
 		name: 'scwSuccess',
 		group: ['transform'],
 		version: 1,

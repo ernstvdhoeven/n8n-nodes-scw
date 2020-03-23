@@ -21,19 +21,19 @@ function keep(element, index, array) {
 
 export class ScwTrustedPartyIsParticipant implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Trusted Party - Is Participant',
+		displayName: 'Scw - Includes Trusted Party',
 		name: 'scwTrustedPartyHasChanged',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the trusted party .',
+		description: 'Input: State Changes, Parties - Output: State Changes for which the Trusted Party is included in the list of parties (input).',
 		defaults: {
-			name: 'Trusted Party Is Participant',
+			name: 'Includes Trusted Party',
 			color: '#772244',
 		},
 		inputs: ['main', 'main'],
         outputs: ['main'],
-        inputNames: ['State Change', 'Parties'],
-        outputNames: ['State Change'],
+        inputNames: ['SC', 'Parties'],
+        outputNames: ['SC'],
 		properties: []
     };
 

@@ -16,11 +16,11 @@ const CREDIT_PER_DAY_ELEC = 5
 
 export class ScwTotalInventoryCost implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw - Get The Total Inventory Cost',
+		displayName: 'Scw - Get Total Inventory Cost',
 		name: 'scwTotalInventoryCost',
 		group: ['transform'],
 		version: 1,
-		description: 'Outputs the total cost of all the inventory for a given input state.',
+		description: 'Input: State - Output: Number which represents the total cost of all the inventory for a given input state.',
 		defaults: {
 			name: 'Get Total Inventory Cost',
 			color: '#772244',

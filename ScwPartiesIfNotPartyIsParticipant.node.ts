@@ -24,19 +24,19 @@ function keep(element, index, array) {
 
 export class ScwPartiesIfNotPartyIsParticipant implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Parties - If The Party Is Not A Participant ',
+		displayName: 'Scw - Party Not Participant ',
 		name: 'scwPartiesIfNotPartyIsParticipant',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if input party is not one of the parties in the current state.',
+		description: 'Input: State Changes, Party - Output: State Changes for which the input party is not one of the parties in the new state.',
 		defaults: {
-			name: 'If The Party Is Not A Participant',
+			name: 'Party Not Participantt',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change', 'Party'],
-        outputNames: ['State Change'],
+        inputNames: ['SC', 'Party'],
+        outputNames: ['SC'],
 		properties: []
     };
 

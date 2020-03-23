@@ -16,25 +16,25 @@ const CREDIT_PER_DAY_ELEC = 5
 
 function keep(element, index, array) {
     const afterCleanup = element.json.dataNew.parties.publicKeys.map(x => x.charAt(0));
-    return afterCleanup.length != afterCleanup.filter(x => Number.isNaN(Number(x))).length;
+    return afterCleanup.length != afterCleanup.filter(x => !Number.isNaN(Number(x))).length;
 }
 
 
 export class ScwPartiesIfInvalidIdentities implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Parties - If An Identity Is Invalid',
+		displayName: 'Scw - Identity Invalid',
 		name: 'scwPartiesIfInvalidIdentities',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if at least one of the identities (publicKeys) of the parties is invalid.',
+		description: 'Input: State Changes - Output: State Changes for which at least one of the identities (publicKeys) of the parties is invalid.',
 		defaults: {
-			name: 'Identity Is Invalid',
+			name: 'Identity Invalid',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

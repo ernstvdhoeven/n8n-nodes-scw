@@ -595,7 +595,7 @@ tests.push({
 
 export class ScwStateChanges implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw - State Changes',
+		displayName: 'Scw System - State Changes',
 		name: 'scwStateChanges',
 		group: ['transform'],
 		version: 1,
@@ -606,7 +606,7 @@ export class ScwStateChanges implements INodeType {
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        outputNames: ['State Change'],
+        outputNames: ['SC'],
 		properties: [
             {
 				displayName: 'parties',

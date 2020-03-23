@@ -22,19 +22,19 @@ function keep(element, index, array) {
 
 export class ScwPartiesIfNotDistinctAfterCleanup implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Parties - If Not Unique After Cleanup',
+		displayName: 'Scw - Double Parties After Cleanup',
 		name: 'scwPartiesIfNotDistinctAfterCleanup',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if there are double entries in the list of parties (after proper key formatting) in the current state.',
+		description: 'Input: State Changes - Output: State Changes for which there are double entries in the list of parties (after proper key formatting) in the new state.',
 		defaults: {
-			name: 'If Not Unique After Cleanup',
+			name: 'Double Parties After Cleanup',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

@@ -16,11 +16,11 @@ const CREDIT_PER_DAY_ELEC = 5
 
 export class ScwPartiesGetParties implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Parties - Get Parties',
+		displayName: 'Scw - Get Parties',
 		name: 'scwPartiesGetParties',
 		group: ['transform'],
 		version: 1,
-		description: 'Outputs all the parties for a given input state.',
+		description: 'Input: State - Output: Parties in the provided input state.',
 		defaults: {
 			name: 'Get Parties',
 			color: '#772244',

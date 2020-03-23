@@ -24,19 +24,19 @@ function keep(element, index, array) {
 
 export class ScwPartiesHaveBeenAdded implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Parties - If Have Been Added',
+		displayName: 'Scw - Parties Added',
 		name: 'scwPartiesHaveBeenAdded',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if parties have been added in the current state.',
+		description: 'Input: State Changes - Output: States Changes in which parties have been added in the new state.',
 		defaults: {
-			name: 'If Parties Added',
+			name: 'Parties Added',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

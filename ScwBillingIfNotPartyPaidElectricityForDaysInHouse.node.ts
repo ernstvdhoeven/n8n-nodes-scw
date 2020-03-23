@@ -30,19 +30,19 @@ function keep(element, index, array) {
 
 export class ScwBillingIfNotPartyPaidElectricityForDaysInHouse implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Billing - If Party Did Not Pay Electricity For Days In House',
+		displayName: 'Scw - Unpaid Electricity Scheduled Days',
 		name: 'scwBillingIfNotPartyPaidElectricityForDaysInHouse',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if parties that stayed in the house paid more for the electricity for those days.',
+		description: 'Input: State Changes - Output: State Changes in which parties that stayed in the house did not pay more for the electricity used those days.',
 		defaults: {
-			name: 'If Not Paid Electricity For Days In House',
+			name: 'Unpaid Electricity Scheduled Days',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

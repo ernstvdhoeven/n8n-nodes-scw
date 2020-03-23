@@ -28,19 +28,19 @@ function keep(element, index, array) {
 
 export class ScwCalendarIfScheduleHasChanged implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Calendar - If Schedule Has Changed',
+		displayName: 'Scw - Schedule Changed',
 		name: 'scwCalendarIfScheduleHasChanged',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the schedule has changed in the state change.',
+		description: 'Input: State Changes - Output: State Changes for which the schedule has changed in the state change.',
 		defaults: {
-			name: 'If Schedule Has Changed',
+			name: 'Schedule Changed',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

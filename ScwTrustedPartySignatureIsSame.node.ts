@@ -21,19 +21,19 @@ function keep(element, index, array) {
 
 export class ScwTrustedPartySignatureIsSame implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Trusted Party Signature - If Is Same As',
+		displayName: 'Scw - Equals Trusted Party Signature',
 		name: 'scwTrustedPartySignatureIsSame',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the provided signature is the same as the trusted party signature of the new state.',
+		description: 'Input: State Changes - Output: State Changes for which the input signature is the same as the trusted party signature of the new state.',
 		defaults: {
-			name: 'If Is Same As',
+			name: 'Equals Trusted Party Signature',
 			color: '#772244',
 		},
 		inputs: ['main', 'main'],
         outputs: ['main'],
-        inputNames: ['State Change', 'Signature'],
-        outputNames: ['State Change'],
+        inputNames: ['SC', 'Signature'],
+        outputNames: ['SC'],
 		properties: []
     };
 

@@ -42,19 +42,19 @@ function keep(element, index, array) {
 
 export class ScwBillingIfNotCompensatedForNegativeCredit implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Billing - If Not Compensated For Negative Credit',
+		displayName: 'Scw - Uncompensated Negative Credit',
 		name: 'scwBillingIfNotCompensatedForNegativeCredit',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the parties do not compensate for negative credit of another party.',
+		description: 'Input: State Changes - Output: State Changes for which the parties do not compensate for negative credit of one of the others.',
 		defaults: {
-			name: 'If Not Compensated For Negative Credit',
+			name: 'Uncompensated Negative Credit',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

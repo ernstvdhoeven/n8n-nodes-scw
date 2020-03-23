@@ -28,19 +28,19 @@ function keep(element, index, array) {
 
 export class ScwBillingIfBalanceChanged implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Billing - If Balance Changed',
+		displayName: 'Scw - Balance Changed',
 		name: 'scwBillingIfBalanceChanged',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if the balance of any of the parties has changed in the current state.',
+		description: 'Input: State Changes - Output: State Changes of which the balance has changed between old and new state.',
 		defaults: {
-			name: 'If Balance Changed',
+			name: 'Balance Changed',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 

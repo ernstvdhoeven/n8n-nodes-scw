@@ -30,19 +30,19 @@ function keep(element, index, array) {
 
 export class ScwCalendarIfReservationHasBeenAdded implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw Calendar - If Reservation Request Has Been Added',
+        displayName: 'Scw - Reservation Request Added',
 		name: 'scwCalendarIfReservationHasBeenAdded',
 		group: ['transform'],
 		version: 1,
-		description: 'Continues if a reservation request has been added/changed in the current state.',
+		description: 'Input: State Changes - Output: State Changes for which a reservation request has been added/changed in the current state.',
 		defaults: {
-			name: 'If Request Has Been Added',
+			name: 'Reservation Request Added',
 			color: '#772244',
 		},
 		inputs: ['main'],
         outputs: ['main'],
-        inputNames: ['State Change'],
-        outputNames: ['State Change'],
+        inputNames: ['SC'],
+        outputNames: ['SC'],
 		properties: []
     };
 
