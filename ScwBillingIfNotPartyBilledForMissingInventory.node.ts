@@ -34,13 +34,13 @@ function keep(element, index, array) {
 
 export class ScwBillingIfNotPartyBilledForMissingInventory implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Scw - Uncompensated Changed Inventory',
+		displayName: 'Scw - Uncompensated Missing Inventory',
 		name: 'scwBillingIfNotPartyBilledForMissingInventory',
 		group: ['transform'],
 		version: 1,
 		description: 'Input: State Changes, Party - Output: State Changes for which the last party (given as input) in the house has not been charged for changes to the inventory.',
 		defaults: {
-			name: 'Uncompensated Changed Inventory',
+			name: 'Uncompensated Missing Inventory',
 			color: '#772244',
 		},
 		inputs: ['main', 'main'],
